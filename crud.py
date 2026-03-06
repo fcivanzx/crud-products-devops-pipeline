@@ -5,21 +5,22 @@ FILE_PATH = "products.json"
 
 
 def _load_data():
-    """Carga productos desde JSON"""
+    """Carga los productos desde el archivo JSON"""
     if not os.path.exists(FILE_PATH):
         return []
+
     with open(FILE_PATH, "r") as f:
         return json.load(f)
 
 
 def _save_data(data):
-    """Guarda productos en JSON"""
+    """Guarda los productos en el archivo JSON"""
     with open(FILE_PATH, "w") as f:
         json.dump(data, f, indent=4)
 
 
 def create_product(product):
-    """Crear producto"""
+    """Agrega un nuevo producto"""
     data = _load_data()
     data.append(product)
     _save_data(data)
@@ -27,12 +28,12 @@ def create_product(product):
 
 
 def read_products():
-    """Leer productos"""
+    """Devuelve todos los productos"""
     return _load_data()
 
 
 def update_product(product_id, new_data):
-    """Actualizar producto"""
+    """Actualiza un producto"""
     data = _load_data()
 
     for product in data:
@@ -45,7 +46,7 @@ def update_product(product_id, new_data):
 
 
 def delete_product(product_id):
-    """Eliminar producto"""
+    """Elimina un producto"""
     data = _load_data()
 
     new_data = [p for p in data if p.get("id") != product_id]
