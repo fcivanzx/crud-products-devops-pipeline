@@ -1,3 +1,9 @@
+import sys
+import os
+
+# Permite que pytest encuentre crud.py
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+
 import crud
 
 
